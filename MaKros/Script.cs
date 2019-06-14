@@ -149,7 +149,7 @@ static partial class Script
     // Наказание
     static IEnumerator LongCombo()
     {
-        UnpressAllKeys();
+        Keys.UnpressAll();
         
         // Удар варвара
         KeyPress(Keys.Back, Keys.FrontPunch);
@@ -187,7 +187,7 @@ static partial class Script
     // Командный захват Горо
     static void GoroThrow()
     {
-        UnpressAllKeys();
+        Keys.UnpressAll();
 
         KeyPress(Keys.Down);
         KeyPress(Keys.Back);
@@ -197,7 +197,7 @@ static partial class Script
     // Землетрясение Горо Куатанского Воина
     static IEnumerator Tremor()
     {
-        UnpressAllKeys();
+        Keys.UnpressAll();
 
         while (true) // Бесконечный цикл
         {
@@ -213,7 +213,7 @@ static partial class Script
     // Нижний удар, а потом кулачная прогулка
     static void LowWalkPunch()
     {
-        UnpressAllKeys();
+        Keys.UnpressAll();
         
         KeyPress(Keys.Back, Keys.FrontKick);
         KeyPress(Keys.Forward, Keys.BackKick);

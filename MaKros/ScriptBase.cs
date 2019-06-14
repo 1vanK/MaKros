@@ -136,45 +136,11 @@ static partial class Script
         KeyPress(currentDeviceID, keys);
     }
 
+    // Оставил эту функцию для совместимости со старыми скриптами.
+    // Используйте Keys.UnpressAll() вместо нее
     public static void UnpressAllKeys(params Key[] except)
     {
-        if (Array.IndexOf(except, Keys.Up) == -1)
-            KeyUp(Keys.Up);
-
-        if (Array.IndexOf(except, Keys.Down) == -1)
-            KeyUp(Keys.Down);
-
-        if (Array.IndexOf(except, Keys.Left) == -1)
-            KeyUp(Keys.Left);
-        
-        if (Array.IndexOf(except, Keys.Right) == -1)
-            KeyUp(Keys.Right);
-        
-        if (Array.IndexOf(except, Keys.FrontPunch) == -1)
-            KeyUp(Keys.FrontPunch);
-        
-        if (Array.IndexOf(except, Keys.BackPunch) == -1)
-            KeyUp(Keys.BackPunch);
-        
-        if (Array.IndexOf(except, Keys.FrontKick) == -1)
-            KeyUp(Keys.FrontKick);
-        
-        if (Array.IndexOf(except, Keys.BackKick) == -1)
-            KeyUp(Keys.BackKick);
-
-        if (Array.IndexOf(except, Keys.Interact) == -1)
-            KeyUp(Keys.Interact);
-        
-        if (Array.IndexOf(except, Keys.Throw) == -1)
-            KeyUp(Keys.Throw);
-        
-        if (Array.IndexOf(except, Keys.FlipStance) == -1)
-            KeyUp(Keys.FlipStance);
-        
-        if (Array.IndexOf(except, Keys.Block) == -1)
-            KeyUp(Keys.Block);
-
-        System.Threading.Thread.Sleep(Keys.PressTime);
+        Keys.UnpressAll(except);
     }
 
     public static void Update()

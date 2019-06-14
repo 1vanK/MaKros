@@ -47,6 +47,51 @@ static class Keys
 
     // Сколько времени клавиша должна быть вжата, чтобы игра зафиксировала нажатие
     public const int PressTime = 20;
+    
+    // Функция для отжатия кнопок
+    public static void UnpressAll(params Key[] except)
+    {
+        // Отжимаем кнопку Up, если ее нет в списке except
+        if (System.Array.IndexOf(except, Up) == -1)
+            Script.KeyUp(Up);
+
+        // Отжимаем кнопку Down, если ее нет в списке except
+        if (System.Array.IndexOf(except, Down) == -1)
+            Script.KeyUp(Down);
+
+        // И так далее
+        if (System.Array.IndexOf(except, Left) == -1)
+            Script.KeyUp(Left);
+        
+        if (System.Array.IndexOf(except, Right) == -1)
+            Script.KeyUp(Right);
+        
+        if (System.Array.IndexOf(except, FrontPunch) == -1)
+            Script.KeyUp(FrontPunch);
+        
+        if (System.Array.IndexOf(except, BackPunch) == -1)
+            Script.KeyUp(BackPunch);
+        
+        if (System.Array.IndexOf(except, FrontKick) == -1)
+            Script.KeyUp(FrontKick);
+        
+        if (System.Array.IndexOf(except, BackKick) == -1)
+            Script.KeyUp(BackKick);
+
+        if (System.Array.IndexOf(except, Interact) == -1)
+            Script.KeyUp(Interact);
+        
+        if (System.Array.IndexOf(except, Throw) == -1)
+            Script.KeyUp(Throw);
+        
+        if (System.Array.IndexOf(except, FlipStance) == -1)
+            Script.KeyUp(FlipStance);
+        
+        if (System.Array.IndexOf(except, Block) == -1)
+            Script.KeyUp(Block);
+
+        System.Threading.Thread.Sleep(PressTime);
+    }
 }
 
 /*
