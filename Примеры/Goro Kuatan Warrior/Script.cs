@@ -1,6 +1,6 @@
 ﻿/*
     Горо Куатанский воин из игры Mortal Kombat XL.
-    Этот скрипт немного отличается от примера из руководства (добавлен усиленный телепорт).
+    Этот скрипт отличается от примера из руководства.
 */
 
 
@@ -92,7 +92,7 @@ static partial class Script
         if (key == Key.R)
         {
             if (!repeat)
-                ExTeleport();
+                Teleport();
 
             return true;
         }
@@ -179,21 +179,39 @@ static partial class Script
     {
         UnpressAllKeys();
 
-        KeyPress(Keys.Down);
-        KeyPress(Keys.Back);
-        KeyPress(Keys.Forward, Keys.FrontKick);
+        if (IsKeyDown(Key.LShift))
+        {
+            KeyPress(Keys.Down);
+            KeyPress(Keys.Back);
+            KeyPress(Keys.Forward, Keys.FrontKick, Keys.Block);
+        }
+        else
+        {
+            KeyPress(Keys.Down);
+            KeyPress(Keys.Back);
+            KeyPress(Keys.Forward, Keys.FrontKick);
+        }
     }
 
+    // Землетрясение
     static IEnumerator Tremor()
     {
         UnpressAllKeys();
 
         while (true)
         {
-            // Землетрясение
-            KeyPress(Keys.Down);
-            Thread.Sleep(Keys.PressTime);
-            KeyPress(Keys.Down, Keys.BackKick);
+            if (IsKeyDown(Key.LShift))
+            {
+                KeyPress(Keys.Down);
+                Thread.Sleep(Keys.PressTime);
+                KeyPress(Keys.Down, Keys.BackKick, Keys.Block);
+            }
+            else
+            {
+                KeyPress(Keys.Down);
+                Thread.Sleep(Keys.PressTime);
+                KeyPress(Keys.Down, Keys.BackKick);
+            }
 
             yield return ComboRunner.Wait(17 * 88);
         }
@@ -207,12 +225,19 @@ static partial class Script
         KeyPress(Keys.Forward, Keys.BackKick);
     }
     
-    static void ExTeleport()
+    static void Teleport()
     {
         UnpressAllKeys();
-        
-                
-        KeyPress(Keys.Down);
-        KeyPress(Keys.Up, Keys.Block);
+
+        if (IsKeyDown(Key.LShift))
+        {
+            KeyPress(Keys.Down);
+            KeyPress(Keys.Up, Keys.Block);
+        }
+        else
+        {
+            KeyPress(Keys.Down);
+            KeyPress(Keys.Up);
+        }
     }
 }
