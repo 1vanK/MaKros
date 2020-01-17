@@ -49,7 +49,7 @@ static partial class Script
         if (code >= 0x100)
         {
             code -= 0x100;
-            result.State = Interception.KeyState.E0;
+            result.State |= Interception.KeyState.E0;
         }
         result.Code = code;
 
